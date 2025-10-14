@@ -1,0 +1,89 @@
+Create a complete, professional website for MSHINDI ENTERPRISES LIMITED using all the information below.
+The website should reflect the company’s identity, colors, and services, and must look clean, corporate, and logistics-oriented.
+You are free to choose how to design and structure it — just make it modern, responsive, and business-ready.
+
+Company Name:
+MSHINDI ENTERPRISES LIMITED
+
+Tagline:
+“Clearing made Easy”
+
+Description:
+Mshindi Enterprises Limited is a professional clearing and forwarding company based in Uganda.
+The company specializes in logistics, customs clearance, import/export management, warehousing, and transportation solutions.
+
+Our Services:
+
+Customs clearance and documentation
+
+Project cargo and handling
+
+Imports and exports clearance
+
+Warehousing and transit cargo handling
+
+Machinery clearance and raw materials
+
+Tax exemptions for specialized cargo
+
+Government and Diplomatic cargo handling
+
+Air cargo and Marine cargo clearance
+
+Logistics and transportation services
+
+Tax consultation and advisory services
+
+Oil and gas handling
+
+Exports and Re-Exports
+
+Contact Information:
+📍 Kira Municipality, Namanve - Wakiso, Uganda
+☎️ +256 756 504 958 / +256 753 989 949
+✉️ mshindienterprisescoltd@gmail.com
+
+Brand Colors (from company materials):
+
+Blue (#00AEEF) – primary background and theme color
+
+Orange (#F58220) – accent/highlight color
+
+White – background or overlay sections
+
+Black/Dark Gray – text color
+
+Visual Style:
+
+Professional logistics / freight theme
+
+Use visuals like containers, trucks, planes, and warehouses
+
+Include rounded elements or overlapping circles (as seen in the brochure)
+
+Maintain a clean blue-white background with orange highlights
+
+Suggested Sections (Replit may modify freely):
+
+Home (hero section with tagline and background image of containers/trucks)
+
+About Us
+
+Our Services (grid or cards)
+
+Gallery or Projects (images of logistics work)
+
+Contact Us (form, map, and contact info)
+
+Footer (company info + copyright)
+
+Extras:
+
+Add smooth scrolling and light animations if possible.
+
+Include a “Request a Quote” or “Get in Touch” button.
+
+Ensure it looks good on both desktop and mobile.
+
+Overall goal:
+A professional, modern logistics company website that matches Mshindi’s branding, includes all provided content and contact details, and uses the given color palette.
