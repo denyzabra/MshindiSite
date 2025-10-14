@@ -16,6 +16,9 @@ export class MemStorage implements IStorage {
     const id = randomUUID();
     const submission: ContactSubmission = {
       ...insertSubmission,
+      phone: insertSubmission.phone || null,
+      company: insertSubmission.company || null,
+      service: insertSubmission.service || null,
       id,
       createdAt: new Date(),
     };

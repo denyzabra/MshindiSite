@@ -57,3 +57,17 @@ Professional corporate website for Mshindi Enterprises Limited, a clearing and f
 - Smooth scroll navigation between sections
 - Contact form with validation and success states
 - Integrated Google Maps for location display
+- Email functionality with Nodemailer (requires SMTP configuration)
+- Fixed card styling to comply with design guidelines (accent bars instead of one-sided borders)
+- All TypeScript errors resolved
+- Comprehensive end-to-end testing completed successfully
+
+## Deployment Notes
+To enable email notifications from the contact form, set the following environment variables:
+- `SMTP_HOST` - SMTP server host (default: smtp.gmail.com)
+- `SMTP_PORT` - SMTP server port (default: 587)
+- `SMTP_USER` - SMTP username/email
+- `SMTP_PASS` - SMTP password/app password
+- `CONTACT_EMAIL` - Email address to receive contact form submissions (default: mshindienterprisescoltd@gmail.com)
+
+Without SMTP configuration, contact form submissions will be logged to the console.

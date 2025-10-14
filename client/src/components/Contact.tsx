@@ -71,9 +71,9 @@ export default function Contact() {
     defaultValues: {
       name: "",
       email: "",
-      phone: "",
-      company: "",
-      service: "",
+      phone: undefined,
+      company: undefined,
+      service: undefined,
       message: "",
     },
   });
@@ -173,7 +173,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel>Phone Number</FormLabel>
                             <FormControl>
-                              <Input placeholder="+256 700 000 000" {...field} data-testid="input-phone" />
+                              <Input placeholder="+256 700 000 000" {...field} value={field.value || ""} data-testid="input-phone" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -187,7 +187,7 @@ export default function Contact() {
                           <FormItem>
                             <FormLabel>Company Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="Your Company" {...field} data-testid="input-company" />
+                              <Input placeholder="Your Company" {...field} value={field.value || ""} data-testid="input-company" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -201,7 +201,7 @@ export default function Contact() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Service Interested In</FormLabel>
-                          <Select onValueChange={field.onChange} value={field.value}>
+                          <Select onValueChange={field.onChange} value={field.value || undefined}>
                             <FormControl>
                               <SelectTrigger data-testid="select-service">
                                 <SelectValue placeholder="Select a service" />
