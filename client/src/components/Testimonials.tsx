@@ -75,7 +75,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function Testimonials() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start" },
+    { loop: true, align: "start", containScroll: "trimSnaps" },
     [Autoplay({ delay: 5000, stopOnInteraction: false })]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -116,19 +116,23 @@ export default function Testimonials() {
         </motion.div>
 
         <div className="relative">
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6">
-              {testimonials.map((testimonial) => (
-                <motion.div
+          <div className="overflow-hidden px-4 md:px-0" ref={emblaRef}>
+            <div className="flex">
+              {testimonials.map((testimonial, index) => (
+                <div
                   key={testimonial.id}
-                  className="flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
+                  className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0"
                   data-testid={`testimonial-${testimonial.id}`}
                 >
-                  <div className="bg-card rounded-lg p-6 md:p-8 h-full border border-border shadow-sm hover:shadow-md transition-shadow">
+                  <motion.div
+                    className={`bg-card rounded-lg p-6 md:p-8 h-full border border-border shadow-sm hover:shadow-md transition-shadow ${
+                      index < testimonials.length - 1 ? 'md:mr-4 lg:mr-4' : ''
+                    }`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <Quote className="w-10 h-10 text-primary/20 mb-4" />
                     
                     <p className="text-muted-foreground mb-6 leading-relaxed italic">
@@ -153,8 +157,8 @@ export default function Testimonials() {
                     </div>
 
                     <StarRating rating={testimonial.rating} />
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </div>
               ))}
             </div>
           </div>
