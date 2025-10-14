@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -34,62 +32,58 @@ export default function Gallery() {
     : galleryImages.filter(img => img.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      
-      <div className="pt-24 pb-16 md:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="inline-block">
-              <div className="h-1 w-16 bg-secondary mb-4"></div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground" data-testid="text-gallery-heading">
-                Our Gallery
-              </h1>
-            </div>
-            <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
-              Explore our comprehensive logistics and clearing services through our project gallery
-            </p>
+    <section id="gallery" className="py-16 md:py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 md:mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="inline-block">
+            <div className="h-1 w-16 bg-secondary mb-4"></div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground" data-testid="text-gallery-heading">
+              Our Gallery
+            </h2>
           </div>
+          <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
+            Explore our comprehensive logistics and clearing services through our project gallery
+          </p>
+        </div>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? "default" : "outline"}
-                onClick={() => setActiveCategory(category)}
-                className="font-semibold"
-                data-testid={`button-category-${category.toLowerCase()}`}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={activeCategory === category ? "default" : "outline"}
+              onClick={() => setActiveCategory(category)}
+              className="font-semibold"
+              data-testid={`button-category-${category.toLowerCase()}`}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {filteredImages.map((image, index) => (
-              <Card 
-                key={image.id}
-                className="group overflow-hidden cursor-pointer hover-elevate active-elevate-2 transition-all duration-300"
-                onClick={() => setSelectedImage(image)}
-                data-testid={`card-gallery-${image.id}`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={image.src}
-                    alt={image.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-sm font-medium text-secondary mb-1">{image.category}</p>
-                      <h3 className="text-xl font-heading font-bold">{image.title}</h3>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {filteredImages.map((image, index) => (
+            <Card 
+              key={image.id}
+              className="group overflow-hidden cursor-pointer hover-elevate active-elevate-2 transition-all duration-300"
+              onClick={() => setSelectedImage(image)}
+              data-testid={`card-gallery-${image.id}`}
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-sm font-medium text-secondary mb-1">{image.category}</p>
+                    <h3 className="text-xl font-heading font-bold">{image.title}</h3>
                   </div>
                 </div>
-              </Card>
-            ))}
-          </div>
+              </div>
+            </Card>
+          ))}
         </div>
       </div>
 
@@ -118,8 +112,6 @@ export default function Gallery() {
           </div>
         </div>
       )}
-
-      <Footer />
-    </div>
+    </section>
   );
 }

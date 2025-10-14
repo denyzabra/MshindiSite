@@ -19,7 +19,7 @@ const features = [
   },
   {
     icon: Award,
-    title: "Professional Service",
+    title: "Quality Service",
     description: "Expert team dedicated to making your logistics seamless and stress-free"
   }
 ];
@@ -36,7 +36,7 @@ export default function About() {
             </h2>
           </div>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Mshindi Enterprises Limited is a professional clearing and forwarding company based in Uganda. 
+            Mshindi Enterprises Limited is a clearing and forwarding company based in Uganda. 
             We specialize in providing comprehensive logistics solutions, customs clearance, import/export management, 
             warehousing, and transportation services to businesses across various industries.
           </p>

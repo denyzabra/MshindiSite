@@ -36,8 +36,8 @@ export default function Navbar() {
     { label: "Home", path: "/", isExternal: true },
     { label: "About", id: "about", path: "/", isExternal: false },
     { label: "Services", id: "services", path: "/", isExternal: false },
-    { label: "Gallery", path: "/gallery", isExternal: true },
-    { label: "Our Team", path: "/teams", isExternal: true },
+    { label: "Gallery", id: "gallery", path: "/", isExternal: false },
+    { label: "Our Team", id: "team", path: "/", isExternal: false },
     { label: "Contact", id: "contact", path: "/", isExternal: false },
   ];
 

@@ -36,7 +36,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    content: "+256 756 504 958 / +256 753 989 949",
+    content: "+256 756 504 958",
     link: "tel:+256756504958"
   },
   {

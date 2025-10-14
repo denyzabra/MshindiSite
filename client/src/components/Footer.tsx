@@ -1,5 +1,5 @@
 import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin } from "lucide-react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -32,7 +32,7 @@ export default function Footer() {
               MSHINDI ENTERPRISES LIMITED
             </h3>
             <p className="text-white/80 leading-relaxed mb-4">
-              Professional clearing and forwarding company specializing in logistics, 
+              Clearing and forwarding company specializing in logistics, 
               customs clearance, and comprehensive transportation solutions across Uganda.
             </p>
             <div className="flex gap-4">
@@ -94,24 +94,22 @@ export default function Footer() {
                 </button>
               </li>
               <li>
-                <Link href="/gallery">
-                  <button
-                    className="text-white/80 hover:text-secondary transition-colors"
-                    data-testid="link-footer-gallery"
-                  >
-                    Gallery
-                  </button>
-                </Link>
+                <button
+                  onClick={() => scrollToSection("gallery")}
+                  className="text-white/80 hover:text-secondary transition-colors"
+                  data-testid="link-footer-gallery"
+                >
+                  Gallery
+                </button>
               </li>
               <li>
-                <Link href="/teams">
-                  <button
-                    className="text-white/80 hover:text-secondary transition-colors"
-                    data-testid="link-footer-teams"
-                  >
-                    Our Team
-                  </button>
-                </Link>
+                <button
+                  onClick={() => scrollToSection("team")}
+                  className="text-white/80 hover:text-secondary transition-colors"
+                  data-testid="link-footer-teams"
+                >
+                  Our Team
+                </button>
               </li>
               <li>
                 <button
@@ -136,7 +134,6 @@ export default function Footer() {
                 <Phone className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
                 <div className="text-white/80">
                   <a href="tel:+256756504958" className="hover:text-secondary transition-colors block">+256 756 504 958</a>
-                  <a href="tel:+256753989949" className="hover:text-secondary transition-colors block">+256 753 989 949</a>
                 </div>
               </li>
               <li className="flex items-start gap-3">

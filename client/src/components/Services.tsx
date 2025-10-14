@@ -18,7 +18,7 @@ const services = [
   {
     icon: FileText,
     title: "Customs Clearance & Documentation",
-    description: "Complete customs clearance services with all necessary documentation handled professionally"
+    description: "Complete customs clearance services with all necessary documentation handled efficiently"
   },
   {
     icon: Package,
@@ -43,7 +43,7 @@ const services = [
   {
     icon: Shield,
     title: "Tax Exemptions for Specialized Cargo",
-    description: "Professional assistance with tax exemption processes for eligible cargo"
+    description: "Expert assistance with tax exemption processes for eligible cargo"
   },
   {
     icon: Building,

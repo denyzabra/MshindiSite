@@ -43,7 +43,7 @@ export default function Hero() {
           </p>
           
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Professional clearing and forwarding company in Uganda specializing in logistics, 
+            Clearing and forwarding company in Uganda specializing in logistics, 
             customs clearance, import/export management, warehousing, and transportation solutions.
           </p>
 
