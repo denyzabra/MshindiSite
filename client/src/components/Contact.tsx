@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Package } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Form,
   FormControl,
@@ -107,151 +109,311 @@ export default function Contact() {
   return (
     <section id="contact" className="py-16 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 md:mb-16"
+        >
           <div className="inline-block">
-            <div className="h-1 w-16 bg-secondary mb-4"></div>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="h-1 w-16 bg-secondary mb-4"
+            />
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground" data-testid="text-contact-heading">
-              Contact Us
+              Get In Touch
             </h2>
           </div>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto">
-            Get in touch with us for all your clearing and forwarding needs
+            Reach out for quotes, inquiries, or any clearing and forwarding assistance
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-12">
-          <div className="lg:col-span-3">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-3"
+          >
             <Card className="p-6 md:p-8">
-              <h3 className="text-2xl font-heading font-bold text-foreground mb-6">Send us a Message</h3>
-              
-              {isSubmitted ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Mail className="w-8 h-8 text-secondary" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-foreground mb-2">Thank you for reaching out!</h4>
-                  <p className="text-muted-foreground">We'll get back to you as soon as possible.</p>
-                </div>
-              ) : (
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Full Name *</FormLabel>
-                            <FormControl>
-                              <Input placeholder="John Doe" {...field} data-testid="input-name" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+              <Tabs defaultValue="contact" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 mb-8">
+                  <TabsTrigger value="contact" data-testid="tab-contact">
+                    <Mail className="w-4 h-4 mr-2" />
+                    Contact Us
+                  </TabsTrigger>
+                  <TabsTrigger value="quote" data-testid="tab-quote">
+                    <Package className="w-4 h-4 mr-2" />
+                    Request a Quote
+                  </TabsTrigger>
+                </TabsList>
 
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email Address *</FormLabel>
-                            <FormControl>
-                              <Input type="email" placeholder="john@example.com" {...field} data-testid="input-email" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                <TabsContent value="contact">
+                  {isSubmitted ? (
+                    <div className="text-center py-12">
+                      <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Mail className="w-8 h-8 text-secondary" />
+                      </div>
+                      <h4 className="text-xl font-semibold text-foreground mb-2">Thank you for reaching out!</h4>
+                      <p className="text-muted-foreground">We'll get back to you as soon as possible.</p>
                     </div>
+                  ) : (
+                    <Form {...form}>
+                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Full Name *</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="John Doe" {...field} data-testid="input-name" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Phone Number</FormLabel>
-                            <FormControl>
-                              <Input placeholder="+256 700 000 000" {...field} value={field.value || ""} data-testid="input-phone" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Email Address *</FormLabel>
+                                <FormControl>
+                                  <Input type="email" placeholder="john@example.com" {...field} data-testid="input-email" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
 
-                      <FormField
-                        control={form.control}
-                        name="company"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Company Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Your Company" {...field} value={field.value || ""} data-testid="input-company" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Phone Number</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="+256 700 000 000" {...field} value={field.value || ""} data-testid="input-phone" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={form.control}
+                            name="company"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Company Name</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Your Company" {...field} value={field.value || ""} data-testid="input-company" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+
+                        <FormField
+                          control={form.control}
+                          name="service"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Service Interested In</FormLabel>
+                              <Select onValueChange={field.onChange} value={field.value || undefined}>
+                                <FormControl>
+                                  <SelectTrigger data-testid="select-service">
+                                    <SelectValue placeholder="Select a service" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {services.map((service) => (
+                                    <SelectItem key={service} value={service}>
+                                      {service}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="message"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Message *</FormLabel>
+                              <FormControl>
+                                <Textarea
+                                  placeholder="Tell us about your requirements..."
+                                  className="min-h-[120px] resize-none"
+                                  {...field}
+                                  data-testid="input-message"
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <Button 
+                          type="submit" 
+                          className="w-full md:w-auto px-8"
+                          disabled={mutation.isPending}
+                          data-testid="button-submit"
+                        >
+                          {mutation.isPending ? "Sending..." : "Send Message"}
+                        </Button>
+                      </form>
+                    </Form>
+                  )}
+                </TabsContent>
+
+                <TabsContent value="quote">
+                  {isSubmitted ? (
+                    <div className="text-center py-12">
+                      <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Package className="w-8 h-8 text-secondary" />
+                      </div>
+                      <h4 className="text-xl font-semibold text-foreground mb-2">Quote request received!</h4>
+                      <p className="text-muted-foreground">We'll review your cargo details and get back to you shortly.</p>
                     </div>
+                  ) : (
+                    <Form {...form}>
+                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Full Name *</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Your full name" {...field} data-testid="input-name" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                    <FormField
-                      control={form.control}
-                      name="service"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Service Interested In</FormLabel>
-                          <Select onValueChange={field.onChange} value={field.value || undefined}>
-                            <FormControl>
-                              <SelectTrigger data-testid="select-service">
-                                <SelectValue placeholder="Select a service" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              {services.map((service) => (
-                                <SelectItem key={service} value={service}>
-                                  {service}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Email Address *</FormLabel>
+                                <FormControl>
+                                  <Input type="email" placeholder="your.email@company.com" {...field} data-testid="input-email" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
 
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message *</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Tell us about your requirements..."
-                              className="min-h-[120px] resize-none"
-                              {...field}
-                              data-testid="input-message"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Phone Number</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="+256 700 000 000" {...field} value={field.value || ""} data-testid="input-phone" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                    <Button 
-                      type="submit" 
-                      className="w-full md:w-auto px-8"
-                      disabled={mutation.isPending}
-                      data-testid="button-submit"
-                    >
-                      {mutation.isPending ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                </Form>
-              )}
+                          <FormField
+                            control={form.control}
+                            name="company"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Company Name</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Your company name" {...field} value={field.value || ""} data-testid="input-company" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+
+                        <FormField
+                          control={form.control}
+                          name="service"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Service Required</FormLabel>
+                              <Select onValueChange={field.onChange} value={field.value || undefined}>
+                                <FormControl>
+                                  <SelectTrigger data-testid="select-service">
+                                    <SelectValue placeholder="Select the service you need" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {services.map((service) => (
+                                    <SelectItem key={service} value={service}>
+                                      {service}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="message"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Cargo Details *</FormLabel>
+                              <FormControl>
+                                <Textarea
+                                  placeholder="Please include: Cargo type, weight, dimensions, origin, destination, and any special requirements..."
+                                  className="min-h-[120px] resize-none"
+                                  {...field}
+                                  data-testid="input-message"
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <Button 
+                          type="submit" 
+                          className="w-full md:w-auto px-8"
+                          disabled={mutation.isPending}
+                          data-testid="button-submit"
+                        >
+                          {mutation.isPending ? "Sending..." : "Request Quote"}
+                        </Button>
+                      </form>
+                    </Form>
+                  )}
+                </TabsContent>
+              </Tabs>
             </Card>
-          </div>
+          </motion.div>
 
           <div className="lg:col-span-2 space-y-6">
             {contactInfo.map((info, index) => {

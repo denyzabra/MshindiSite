@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import heroImage from "@assets/stock_images/shipping_containers__3e8d9c6d.jpg";
 
 export default function Hero() {
@@ -31,23 +32,55 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight" data-testid="text-hero-title">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="space-y-6"
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight"
+            data-testid="text-hero-title"
+          >
             MSHINDI ENTERPRISES LIMITED
-          </h1>
+          </motion.h1>
           
-          <div className="h-1 w-24 bg-secondary mx-auto"></div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="h-1 w-24 bg-secondary mx-auto"
+          />
           
-          <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-white/95 italic" data-testid="text-tagline">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-white/95 italic"
+            data-testid="text-tagline"
+          >
             "Clearance made easier"
-          </p>
+          </motion.p>
           
-          <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+          >
             Clearing and forwarding company in Uganda specializing in logistics, 
             customs clearance, import/export management, warehousing, and transportation solutions.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
+          >
             <Button
               onClick={() => scrollToSection("contact")}
               size="lg"
@@ -66,8 +99,8 @@ export default function Hero() {
             >
               Our Services
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
