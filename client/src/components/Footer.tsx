@@ -1,19 +1,25 @@
 import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Link, useLocation } from "wouter";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [location] = useLocation();
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+    if (location !== "/") {
+      window.location.href = `/#${sectionId}`;
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
     }
   };
 
@@ -88,6 +94,26 @@ export default function Footer() {
                 </button>
               </li>
               <li>
+                <Link href="/gallery">
+                  <button
+                    className="text-white/80 hover:text-secondary transition-colors"
+                    data-testid="link-footer-gallery"
+                  >
+                    Gallery
+                  </button>
+                </Link>
+              </li>
+              <li>
+                <Link href="/teams">
+                  <button
+                    className="text-white/80 hover:text-secondary transition-colors"
+                    data-testid="link-footer-teams"
+                  >
+                    Our Team
+                  </button>
+                </Link>
+              </li>
+              <li>
                 <button
                   onClick={() => scrollToSection("contact")}
                   className="text-white/80 hover:text-secondary transition-colors"
@@ -132,8 +158,8 @@ export default function Footer() {
             <p className="text-white/60 text-sm" data-testid="text-copyright">
               &copy; {currentYear} Mshindi Enterprises Limited. All rights reserved.
             </p>
-            <p className="text-white/60 text-sm">
-              Clearing made Easy
+            <p className="text-white/60 text-sm italic">
+              "Clearance made easier"
             </p>
           </div>
         </div>

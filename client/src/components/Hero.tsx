@@ -38,8 +38,8 @@ export default function Hero() {
           
           <div className="h-1 w-24 bg-secondary mx-auto"></div>
           
-          <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-white/95" data-testid="text-tagline">
-            "Clearing made Easy"
+          <p className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-white/95 italic" data-testid="text-tagline">
+            "Clearance made easier"
           </p>
           
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">

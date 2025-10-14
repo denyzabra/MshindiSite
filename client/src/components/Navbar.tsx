@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "wouter";
+import Logo from "@/components/Logo";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +33,25 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Services", id: "services" },
-    { label: "Contact", id: "contact" },
+    { label: "Home", path: "/", isExternal: true },
+    { label: "About", id: "about", path: "/", isExternal: false },
+    { label: "Services", id: "services", path: "/", isExternal: false },
+    { label: "Gallery", path: "/gallery", isExternal: true },
+    { label: "Our Team", path: "/teams", isExternal: true },
+    { label: "Contact", id: "contact", path: "/", isExternal: false },
   ];
+
+  const handleNavClick = (link: typeof navLinks[0]) => {
+    if (link.isExternal) {
+      setIsMobileMenuOpen(false);
+    } else if (link.id) {
+      if (location !== "/") {
+        window.location.href = `/#${link.id}`;
+      } else {
+        scrollToSection(link.id);
+      }
+    }
+  };
 
   return (
     <nav
@@ -44,29 +61,42 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center">
-            <button
-              onClick={() => scrollToSection("home")}
-              className="text-white font-heading text-xl sm:text-2xl font-bold tracking-tight hover:opacity-90 transition-opacity"
-              data-testid="link-home"
-            >
-              MSHINDI ENTERPRISES
-            </button>
-          </div>
+          <Link href="/" className="text-white hover:opacity-90 transition-opacity">
+            <div data-testid="link-home">
+              <Logo className="text-lg sm:text-xl md:text-2xl" />
+            </div>
+          </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-white hover:text-secondary transition-colors font-medium"
-                data-testid={`link-${link.id}`}
-              >
-                {link.label}
-              </button>
+              link.isExternal ? (
+                <Link key={link.label} href={link.path}>
+                  <button
+                    className="text-white hover:text-secondary transition-colors font-medium"
+                    data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {link.label}
+                  </button>
+                </Link>
+              ) : (
+                <button
+                  key={link.label}
+                  onClick={() => handleNavClick(link)}
+                  className="text-white hover:text-secondary transition-colors font-medium"
+                  data-testid={`link-${link.label.toLowerCase()}`}
+                >
+                  {link.label}
+                </button>
+              )
             ))}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => {
+                if (location !== "/") {
+                  window.location.href = "/#contact";
+                } else {
+                  scrollToSection("contact");
+                }
+              }}
               variant="secondary"
               className="font-semibold"
               data-testid="button-quote"
@@ -89,17 +119,35 @@ export default function Navbar() {
           <div className="md:hidden pb-4 animate-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-white hover:text-secondary transition-colors font-medium text-left py-2"
-                  data-testid={`link-mobile-${link.id}`}
-                >
-                  {link.label}
-                </button>
+                link.isExternal ? (
+                  <Link key={link.label} href={link.path}>
+                    <button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-white hover:text-secondary transition-colors font-medium text-left py-2 w-full"
+                      data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      {link.label}
+                    </button>
+                  </Link>
+                ) : (
+                  <button
+                    key={link.label}
+                    onClick={() => handleNavClick(link)}
+                    className="text-white hover:text-secondary transition-colors font-medium text-left py-2"
+                    data-testid={`link-mobile-${link.label.toLowerCase()}`}
+                  >
+                    {link.label}
+                  </button>
+                )
               ))}
               <Button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => {
+                  if (location !== "/") {
+                    window.location.href = "/#contact";
+                  } else {
+                    scrollToSection("contact");
+                  }
+                }}
                 variant="secondary"
                 className="font-semibold w-full"
                 data-testid="button-mobile-quote"
