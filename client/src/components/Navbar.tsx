@@ -61,9 +61,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-white hover:opacity-90 transition-opacity">
+          <Link href="/" className="hover:opacity-90 transition-opacity">
             <div data-testid="link-home">
-              <Logo className="text-lg sm:text-xl md:text-2xl" />
+              <Logo className="h-12 md:h-16" />
             </div>
           </Link>
 

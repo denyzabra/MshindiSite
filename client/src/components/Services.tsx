@@ -1,3 +1,5 @@
+import { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { 
   FileText, 
   Package, 
@@ -10,9 +12,12 @@ import {
   Truck, 
   Calculator, 
   Fuel, 
-  ArrowRightLeft 
+  ArrowRightLeft,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -78,6 +83,43 @@ const services = [
 ];
 
 export default function Services() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 768px)': { slidesToScroll: 2 },
+      '(min-width: 1024px)': { slidesToScroll: 3 }
+    }
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+    
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  const scrollTo = useCallback((index: number) => emblaApi?.scrollTo(index), [emblaApi]);
+
   return (
     <section id="services" className="py-16 md:py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,28 +135,74 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <Card 
-                key={index}
-                className="p-6 hover-elevate active-elevate-2 transition-all duration-300 relative group"
-                data-testid={`card-service-${index}`}
-              >
-                <div className="absolute top-0 left-6 right-6 h-1 bg-secondary"></div>
-                <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </Card>
-            );
-          })}
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6 md:gap-8">
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <div 
+                    key={index}
+                    className="flex-[0_0_100%] md:flex-[0_0_48%] lg:flex-[0_0_31%] min-w-0"
+                  >
+                    <Card 
+                      className="h-full p-6 hover-elevate active-elevate-2 transition-all duration-300 relative group"
+                      data-testid={`card-service-${index}`}
+                    >
+                      <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-primary to-secondary"></div>
+                      <div className="bg-gradient-to-br from-primary to-primary/80 rounded-full w-16 h-16 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <Icon className="w-8 h-8 text-primary-foreground" />
+                      </div>
+                      <h3 className="text-xl font-heading font-bold text-foreground mb-3">{service.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-10 bg-background shadow-lg disabled:opacity-50"
+            onClick={scrollPrev}
+            disabled={!canScrollPrev}
+            data-testid="button-prev-service"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </Button>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-10 bg-background shadow-lg disabled:opacity-50"
+            onClick={scrollNext}
+            disabled={!canScrollNext}
+            data-testid="button-next-service"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </Button>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: services.length }).map((_, index) => (
+            <button
+              key={index}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === selectedIndex 
+                  ? 'bg-primary w-8' 
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+              }`}
+              onClick={() => scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              data-testid={`dot-${index}`}
+            />
+          ))}
         </div>
 
         <div className="mt-12 text-center">
-          <Card className="p-8 bg-primary text-primary-foreground">
+          <Card className="p-8 bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-xl">
             <div className="flex items-center justify-center gap-3 mb-4">
               <ArrowRightLeft className="w-8 h-8" />
               <h3 className="text-2xl font-heading font-bold">Exports & Re-Exports</h3>

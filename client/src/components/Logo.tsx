@@ -1,12 +1,13 @@
-export default function Logo({ className = "text-2xl" }: { className?: string }) {
+import logoImage from "@assets/logo.png";
+
+export default function Logo({ className = "h-12 md:h-14" }: { className?: string }) {
   return (
-    <div className={`font-heading text-white ${className}`}>
-      <div className="flex items-center gap-3">
-        <div className="flex flex-col">
-          <span className="font-bold leading-tight tracking-tight">MSHINDI ENTERPRISES</span>
-          <span className="text-xs font-normal opacity-90 italic">"Clearance made easier"</span>
-        </div>
-      </div>
+    <div className="flex items-center gap-3">
+      <img 
+        src={logoImage} 
+        alt="MSHINDI ENTERPRISES LIMITED - Clearance made easier" 
+        className={className}
+      />
     </div>
   );
 }
