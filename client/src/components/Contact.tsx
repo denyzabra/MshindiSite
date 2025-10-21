@@ -156,7 +156,7 @@ export default function Contact() {
 
                 <TabsContent value="contact">
                   {isSubmitted ? (
-                    <div className="text-center py-12">
+                    <div className="text-center py-12" data-testid="success-message">
                       <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Mail className="w-8 h-8 text-secondary" />
                       </div>
@@ -285,7 +285,7 @@ export default function Contact() {
 
                 <TabsContent value="quote">
                   {isSubmitted ? (
-                    <div className="text-center py-12">
+                    <div className="text-center py-12" data-testid="success-message-quote">
                       <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <Package className="w-8 h-8 text-secondary" />
                       </div>
@@ -403,7 +403,7 @@ export default function Contact() {
                           type="submit" 
                           className="w-full md:w-auto px-8"
                           disabled={mutation.isPending}
-                          data-testid="button-submit"
+                          data-testid="button-quote"
                         >
                           {mutation.isPending ? "Sending..." : "Request Quote"}
                         </Button>
