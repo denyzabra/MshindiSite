@@ -53,6 +53,19 @@ export default function About() {
             We specialize in providing comprehensive logistics solutions, customs clearance, import/export management, 
             warehousing, and transportation services to businesses across various industries.
           </p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-6 max-w-3xl mx-auto"
+          >
+            <p className="text-base text-muted-foreground/90 italic border-l-4 border-primary pl-4 py-2">
+              We are affiliated under the umbrella of Uganda Clearing Industry and Forwarding Association (UCIFA) 
+              which is the Apex body of all indigenous clearing and forwarding firms in Uganda with Companies 
+              Licensed by Uganda Revenue Authority.
+            </p>
+          </motion.div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">

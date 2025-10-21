@@ -39,7 +39,7 @@ export async function sendContactEmail(submission: InsertContactSubmission): Pro
   try {
     await transporter.sendMail({
       from: process.env.SMTP_USER,
-      to: process.env.CONTACT_EMAIL || "mshindienterprisescoltd@gmail.com",
+      to: process.env.CONTACT_EMAIL || "gilbertodongo02@gmail.com",
       replyTo: submission.email,
       subject: `New Contact Form: ${submission.name} - ${submission.service || "General Inquiry"}`,
       html: emailContent,

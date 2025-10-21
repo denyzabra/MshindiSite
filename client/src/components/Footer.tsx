@@ -33,7 +33,8 @@ export default function Footer() {
             </h3>
             <p className="text-white/80 leading-relaxed mb-4">
               Clearing and forwarding company specializing in logistics, 
-              customs clearance, and comprehensive transportation solutions across Uganda.
+              customs clearance, and comprehensive transportation solutions across Uganda. 
+              Affiliated with UCIFA and licensed by Uganda Revenue Authority.
             </p>
             <div className="flex gap-4">
               <a 
