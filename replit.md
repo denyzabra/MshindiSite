@@ -100,11 +100,26 @@ Corporate website for Mshindi Enterprises Limited, a clearing and forwarding com
 - **Accessibility** - Added aria-label to WhatsApp button, proper test IDs throughout, keyboard navigation support
 
 ## Deployment Notes
-To enable email notifications from the contact form, set the following environment variables:
+
+### Email Configuration (REQUIRED FOR PRODUCTION)
+To enable email notifications from both "Contact Us" and "Request Quote" forms:
+
+**Add these secrets to Replit Secrets (Tools → Secrets):**
+
+1. **SMTP_USER** = `gilbertodongo02@gmail.com`
+2. **SMTP_PASS** = Your Gmail App Password (see instructions below)
+
+**How to get Gmail App Password:**
+1. Go to your Google Account settings
+2. Navigate to Security → Enable 2-Step Verification (required)
+3. Navigate to Security → App passwords
+4. Generate a new password for "Mail"
+5. Copy the 16-character password (format: xxxx xxxx xxxx xxxx)
+6. Add it to Replit Secrets as SMTP_PASS
+
+**Optional Configuration:**
 - `SMTP_HOST` - SMTP server host (default: smtp.gmail.com)
 - `SMTP_PORT` - SMTP server port (default: 587)
-- `SMTP_USER` - SMTP username/email
-- `SMTP_PASS` - SMTP password/app password
-- `CONTACT_EMAIL` - Email address to receive contact form submissions (default: mshindienterprisescoltd@gmail.com)
+- `CONTACT_EMAIL` - Email recipient (default: gilbertodongo02@gmail.com)
 
-Without SMTP configuration, contact form submissions will be logged to the console.
+**Without SMTP configuration:** Contact form submissions will be logged to the console with clear instructions for enabling email sending.
