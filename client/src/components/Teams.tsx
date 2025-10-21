@@ -6,15 +6,17 @@ const teamMembers = [
     id: 1,
     name: "Amia Nancy",
     position: "Operations Manager",
-    email: "amiancynancy@gmail.com",
-    phone: "+256 756 504 958",
+    // TODO: Add Nancy's email address when available
+    email: "", // Leave empty for now - will be provided later
+    // TODO: Add Nancy's phone number when available  
+    phone: "", // Leave empty for now - will be provided later
   },
   {
     id: 2,
     name: "Odong Gilbert",
     position: "Logistics Coordinator",
-    email: "odonggilbert225@gmail.com",
-    phone: "+256 756 504 958",
+    email: "gilbertodongo02@gmail.com",
+    phone: "+256756504958",
   },
 ];
 

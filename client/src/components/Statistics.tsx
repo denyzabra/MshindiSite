@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Package, TrendingUp, Users, Globe } from "lucide-react";
+import { Package, Users, Globe } from "lucide-react";
 
 interface StatProps {
   icon: React.ReactNode;
@@ -83,13 +83,8 @@ export default function Statistics() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          <AnimatedStat
-            icon={<TrendingUp className="w-8 h-8 md:w-10 md:h-10" />}
-            value={15}
-            suffix="+"
-            label="Years of Excellence"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto">
+          {/* TODO: Add "Years of Excellence" statistic when actual number is confirmed */}
           <AnimatedStat
             icon={<Package className="w-8 h-8 md:w-10 md:h-10" />}
             value={500}
