@@ -61,22 +61,36 @@ export default function Teams() {
                 </p>
                 
                 <div className="w-full space-y-3">
-                  <a 
-                    href={`mailto:${member.email}`}
-                    className="flex items-center justify-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-                    data-testid={`link-email-${member.id}`}
-                  >
-                    <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    <span className="text-sm">{member.email}</span>
-                  </a>
-                  <a 
-                    href={`tel:${member.phone}`}
-                    className="flex items-center justify-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-                    data-testid={`link-phone-${member.id}`}
-                  >
-                    <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    <span className="text-sm">{member.phone}</span>
-                  </a>
+                  {member.email ? (
+                    <a 
+                      href={`mailto:${member.email}`}
+                      className="flex items-center justify-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                      data-testid={`link-email-${member.id}`}
+                    >
+                      <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                      <span className="text-sm">{member.email}</span>
+                    </a>
+                  ) : (
+                    <div className="flex items-center justify-center gap-3 text-muted-foreground/40">
+                      <Mail className="w-5 h-5" />
+                      <span className="text-sm italic">Email coming soon</span>
+                    </div>
+                  )}
+                  {member.phone ? (
+                    <a 
+                      href={`tel:${member.phone}`}
+                      className="flex items-center justify-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                      data-testid={`link-phone-${member.id}`}
+                    >
+                      <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                      <span className="text-sm">{member.phone}</span>
+                    </a>
+                  ) : (
+                    <div className="flex items-center justify-center gap-3 text-muted-foreground/40">
+                      <Phone className="w-5 h-5" />
+                      <span className="text-sm italic">Phone coming soon</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </Card>

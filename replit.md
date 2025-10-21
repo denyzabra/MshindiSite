@@ -23,15 +23,14 @@ Corporate website for Mshindi Enterprises Limited, a clearing and forwarding com
 ### Key Features
 1. **Logo & Branding** - Company logo from PDF (converted to PNG) displayed in navbar
 2. **Hero Section** - Full-width hero with logistics imagery, company tagline, and scroll animations
-3. **About Section** - Company overview with 4 key features and scroll animations
-4. **Statistics Section** - Animated counters showing years of experience (15+), shipments cleared (500+), client satisfaction (98%), and countries served (25+)
+3. **About Section** - Company overview with 4 key features, UCIFA affiliation information, and scroll animations
+4. **Statistics Section** - Animated counters showing shipments cleared (500+), client satisfaction (98%), and countries served (25+)
 5. **Services Section** - Modern carousel with Embla, featuring 12+ services with navigation arrows and pagination dots
-6. **Testimonials Section** - Auto-playing carousel with 5 client reviews, star ratings, and responsive slides (1/2/3 per viewport)
-7. **Gallery Section** - Image gallery with category filtering and lightbox functionality
-8. **Teams Section** - Team member showcase with Amia Nancy and Odong Gilbert
-9. **Contact Section** - Tabbed form ("Contact Us" / "Request a Quote") with cargo-specific fields, company info, and embedded map
-10. **WhatsApp Integration** - Floating action button with smooth animations linking to business WhatsApp with pre-filled message
-11. **Footer** - Company information, quick links, social media
+6. **Gallery Section** - Image gallery with category filtering and lightbox functionality
+7. **Teams Section** - Team member showcase with Amia Nancy and Odong Gilbert
+8. **Contact Section** - Tabbed form ("Contact Us" / "Request a Quote") with cargo-specific fields, company info, and embedded map
+9. **WhatsApp Integration** - Floating action button with smooth animations linking to business WhatsApp with pre-filled message
+10. **Footer** - Company information, quick links, social media, UCIFA affiliation
 
 ### Services Offered
 - Customs clearance and documentation
@@ -57,12 +56,13 @@ Corporate website for Mshindi Enterprises Limited, a clearing and forwarding com
 ### Teams Section
 - **Team Members**:
   - **Amia Nancy** - Operations Manager
-    - Email: amiancynancy@gmail.com
-    - Phone: +256 756 504 958
+    - Email: *Coming soon* (TODO: Add when available)
+    - Phone: *Coming soon* (TODO: Add when available)
   - **Odong Gilbert** - Logistics Coordinator
-    - Email: odonggilbert225@gmail.com
+    - Email: gilbertodongo02@gmail.com
     - Phone: +256756504958
 - **Placeholder Avatars**: Gradient circles with user icon and "Photo Coming Soon" text (user will add images later)
+- **Contact Display**: Shows "coming soon" message for members with pending contact information
 - **"Join Our Team" CTA**: Call-to-action section with company benefits
 
 ### Contact Information
@@ -92,12 +92,17 @@ Corporate website for Mshindi Enterprises Limited, a clearing and forwarding com
 - **Services Carousel** (October 14, 2025) - Redesigned services section from static grid to modern Embla carousel with navigation arrows, pagination dots, responsive slides (1/2/3 per viewport), and gradient styling
 
 ### Quick Wins Implementation (October 14, 2025)
-- **Animated Statistics** - Count-up animations for key metrics (15+ years, 500+ shipments, 98% satisfaction, 25+ countries) using Framer Motion and requestAnimationFrame
+- **Animated Statistics** - Count-up animations for key metrics (500+ shipments, 98% satisfaction, 25+ countries) using Framer Motion and requestAnimationFrame
 - **WhatsApp Button** - Floating CTA in bottom-right with spring animations, links to +256 756 504 958 with pre-filled message about logistics services
-- **Testimonials Carousel** - Auto-playing Embla carousel with 5 client reviews, 5-star ratings, responsive display (1/2/3 slides), navigation arrows (desktop), and pagination dots
-- **Scroll Animations** - Framer Motion whileInView animations across all sections (Hero, About, Statistics, Services, Testimonials, Gallery, Teams, Contact) with fade-in and slide-up effects
+- **Scroll Animations** - Framer Motion whileInView animations across all sections (Hero, About, Statistics, Services, Gallery, Teams, Contact) with fade-in and slide-up effects
 - **Tabbed Contact Form** - Enhanced contact section with tabs for "Contact Us" (general inquiries) and "Request a Quote" (cargo-specific with detailed placeholder text for type, weight, origin, destination)
 - **Accessibility** - Added aria-label to WhatsApp button, proper test IDs throughout, keyboard navigation support
+
+### Content Updates (October 21, 2025)
+- **Removed Testimonials Section** - Testimonials carousel removed until authentic client reviews are provided
+- **Removed Years Statistic** - "15+ Years of Excellence" removed from Statistics section until actual number is confirmed (TODO comment added)
+- **Updated Team Contact Info** - Gilbert's email updated to gilbertodongo02@gmail.com; Nancy's contact info pending (shows "coming soon" placeholder)
+- **UCIFA Affiliation** - Added Uganda Clearing Industry and Forwarding Association affiliation information to About section and Footer
 
 ## Deployment Notes
 
