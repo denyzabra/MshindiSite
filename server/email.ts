@@ -5,7 +5,7 @@ import type { InsertContactSubmission } from "@shared/schema";
 // EMAIL CONFIGURATION
 // ==========================================
 // TO ENABLE PRODUCTION EMAIL SENDING:
-// 1. Add SMTP_USER and SMTP_PASS to your Replit Secrets
+// 1. Create a .env file with SMTP_USER and SMTP_PASS
 // 2. SMTP_USER should be: gilbertodongo02@gmail.com
 // 3. SMTP_PASS should be your Gmail App Password (16 characters)
 //
@@ -19,8 +19,8 @@ const transporter = nodemailer.createTransport({
   port: parseInt(process.env.SMTP_PORT || "587"),
   secure: false,
   auth: process.env.SMTP_USER && process.env.SMTP_PASS ? {
-    user: process.env.SMTP_USER,        // Add to Secrets: gilbertodongo02@gmail.com
-    pass: process.env.SMTP_PASS,        // Add to Secrets: Your Gmail App Password
+    user: process.env.SMTP_USER,        // From .env: gilbertodongo02@gmail.com
+    pass: process.env.SMTP_PASS,        // From .env: Your Gmail App Password
   } : undefined,
 });
 
@@ -28,14 +28,14 @@ export async function sendContactEmail(submission: InsertContactSubmission): Pro
   // ==========================================
   // IMPORTANT: ADD SMTP CREDENTIALS TO ENABLE EMAIL SENDING
   // ==========================================
-  // Without SMTP_USER and SMTP_PASS in Replit Secrets, 
+  // Without SMTP_USER and SMTP_PASS in .env file, 
   // form submissions will only be logged to console (see below)
   // ==========================================
   
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.log("\n⚠️  EMAIL NOT CONFIGURED - Form submission logged (not sent via email)");
     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-    console.log("📧 To enable email sending, add these to Replit Secrets:");
+    console.log("📧 To enable email sending, create .env file with:");
     console.log("   SMTP_USER = gilbertodongo02@gmail.com");
     console.log("   SMTP_PASS = Your Gmail App Password");
     console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");

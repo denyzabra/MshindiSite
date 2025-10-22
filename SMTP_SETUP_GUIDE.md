@@ -44,21 +44,24 @@ Gmail requires **App Passwords** for applications to send emails securely. Follo
 
 You need to add the SMTP credentials to your deployment environment.
 
-### For Replit Deployment (Development & Testing)
+### For Local Development
 
-1. In your Replit project, click **Tools** in the sidebar
-2. Click **Secrets**
-3. Add the following secrets:
+1. Create a `.env` file in the project root directory
+2. Add the following environment variables:
 
-| Secret Key | Secret Value | Description |
-|------------|--------------|-------------|
-| `SMTP_USER` | `gilbertodongo02@gmail.com` | Your Gmail address |
-| `SMTP_PASS` | `xxxx xxxx xxxx xxxx` | The 16-character app password from Step 1.2 |
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=gilbertodongo02@gmail.com
+SMTP_PASS=your-16-character-app-password
+CONTACT_EMAIL=gilbertodongo02@gmail.com
+NODE_ENV=development
+```
 
-**Optional Secrets** (use defaults if not provided):
-- `SMTP_HOST` - Default: `smtp.gmail.com`
-- `SMTP_PORT` - Default: `587`
-- `CONTACT_EMAIL` - Default: `gilbertodongo02@gmail.com`
+3. Replace `your-16-character-app-password` with the actual app password from Step 1.2
+4. Save the file
+
+**Note:** The `.env` file is already in `.gitignore` and will not be committed to version control.
 
 ### For Vercel Deployment (Production)
 
@@ -144,8 +147,9 @@ The email system is already configured in the codebase:
 
 ✅ **Environment Variables:**
 - Never commit secrets to version control
-- Secrets are encrypted in Replit/Vercel
-- Each environment (dev/production) has separate secrets
+- Keep .env files secure and excluded from git
+- Use environment-specific variables for dev/production
+- Secrets are encrypted in hosting platforms like Vercel
 
 ---
 
