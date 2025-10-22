@@ -56,13 +56,12 @@ Corporate website for Mshindi Enterprises Limited, a clearing and forwarding com
 ### Teams Section
 - **Team Members**:
   - **Amia Nancy** - Operations Manager
-    - Email: *Coming soon* (TODO: Add when available)
-    - Phone: *Coming soon* (TODO: Add when available)
+    - Email: nancyamian354@gmail.com
+    - Phone: +256753989949
   - **Odong Gilbert** - Logistics Coordinator
     - Email: gilbertodongo02@gmail.com
     - Phone: +256756504958
 - **Placeholder Avatars**: Gradient circles with user icon and "Photo Coming Soon" text (user will add images later)
-- **Contact Display**: Shows "coming soon" message for members with pending contact information
 - **"Join Our Team" CTA**: Call-to-action section with company benefits
 
 ### Contact Information
@@ -101,30 +100,45 @@ Corporate website for Mshindi Enterprises Limited, a clearing and forwarding com
 ### Content Updates (October 21, 2025)
 - **Removed Testimonials Section** - Testimonials carousel removed until authentic client reviews are provided
 - **Removed Years Statistic** - "15+ Years of Excellence" removed from Statistics section until actual number is confirmed (TODO comment added)
-- **Updated Team Contact Info** - Gilbert's email updated to gilbertodongo02@gmail.com; Nancy's contact info pending (shows "coming soon" placeholder)
+- **Finalized Team Contact Info** - Nancy (nancyamian354@gmail.com, +256753989949) and Gilbert (gilbertodongo02@gmail.com, +256756504958)
 - **UCIFA Affiliation** - Added Uganda Clearing Industry and Forwarding Association affiliation information to About section and Footer
+- **Deployment Guides** - Created comprehensive SMTP_SETUP_GUIDE.md for email configuration and VERCEL_DEPLOYMENT_GUIDE.md for production deployment with custom domain setup
 
 ## Deployment Notes
 
 ### Email Configuration (REQUIRED FOR PRODUCTION)
-To enable email notifications from both "Contact Us" and "Request Quote" forms:
 
-**Add these secrets to Replit Secrets (Tools → Secrets):**
+**📧 See [SMTP_SETUP_GUIDE.md](./SMTP_SETUP_GUIDE.md) for complete email setup instructions.**
 
-1. **SMTP_USER** = `gilbertodongo02@gmail.com`
-2. **SMTP_PASS** = Your Gmail App Password (see instructions below)
+**Quick Setup:**
+1. Enable 2-Step Verification on gilbertodongo02@gmail.com
+2. Generate Gmail App Password (16 characters)
+3. Add to environment variables:
+   - `SMTP_USER` = gilbertodongo02@gmail.com
+   - `SMTP_PASS` = Your Gmail App Password
 
-**How to get Gmail App Password:**
-1. Go to your Google Account settings
-2. Navigate to Security → Enable 2-Step Verification (required)
-3. Navigate to Security → App passwords
-4. Generate a new password for "Mail"
-5. Copy the 16-character password (format: xxxx xxxx xxxx xxxx)
-6. Add it to Replit Secrets as SMTP_PASS
+Both "Contact Us" and "Request a Quote" forms send emails to **gilbertodongo02@gmail.com**.
 
-**Optional Configuration:**
-- `SMTP_HOST` - SMTP server host (default: smtp.gmail.com)
-- `SMTP_PORT` - SMTP server port (default: 587)
-- `CONTACT_EMAIL` - Email recipient (default: gilbertodongo02@gmail.com)
+### Vercel Deployment with Custom Domain
 
-**Without SMTP configuration:** Contact form submissions will be logged to the console with clear instructions for enabling email sending.
+**🚀 See [VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md) for complete deployment instructions.**
+
+**Quick Overview:**
+1. Push code to GitHub
+2. Import to Vercel
+3. Add environment variables (SMTP credentials)
+4. Deploy to Vercel
+5. Add custom domain in Vercel dashboard
+6. Update DNS records in cPanel (A record + CNAME)
+7. Wait for DNS propagation (30min - 48hrs)
+8. SSL certificate auto-provisions
+9. Website is live! 🎉
+
+**Deployment Guides Include:**
+- Step-by-step Vercel deployment process
+- Custom domain setup from cPanel
+- DNS configuration (A and CNAME records)
+- SSL certificate setup (automatic)
+- Environment variables configuration
+- Troubleshooting common issues
+- Continuous deployment setup
