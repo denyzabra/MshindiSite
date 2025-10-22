@@ -68,7 +68,7 @@ All form submissions will be sent to: **gilbertodongo02@gmail.com**
 ### Test Quote Request Form:
 1. Click the "Request a Quote" tab
 2. Fill out the form with cargo details
-3. Click "Request Quote"
+3. Click "Request Quote"clea
 4. Check gilbertodongo02@gmail.com for the email!
 
 ---
