@@ -1,11 +1,11 @@
 {
-  "version": 2,
   "buildCommand": "npm run build",
   "installCommand": "npm install --include=dev",
+  "outputDirectory": "dist/public",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api"
+      "source": "/api/contact",
+      "destination": "/api/contact"
     }
   ]
 }
